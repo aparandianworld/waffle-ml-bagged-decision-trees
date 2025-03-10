@@ -65,3 +65,14 @@ print("\nClassification report:")
 print(classification_report(y_test, y_hat))
 print("\nConfusion matrix:")
 print(confusion_matrix(y_test, y_hat))
+
+# Visualize the decision tree
+for i in range(min(3, len(model.estimators_))):
+    plt.figure(figsize=(12, 8))
+    plot_tree(
+        model.estimators_[i],
+        filled=True,
+        feature_names=feature_names,
+        class_names=iris.target_names,
+    )
+    plt.show()
